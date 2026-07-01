@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    
+    <meta property="og:title" content="Lala Fashion - Summer Collection 2026">
+    <meta property="og:description" content="Khám phá ngay 500+ sản phẩm thời trang hè mới nhất. Liên hệ mua hàng trực tiếp qua Fanpage.">
+    <meta property="og:image" content="banner.png">
+    <meta property="og:type" content="website">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lalafashion</title>
+    <style>
+
+        
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- TOP ANNOUNCEMENT BAR --- */
+        .top-banner {
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 1px solid #f0f0f0;
+            height: 80px;
+        }
+
+        .logo-box-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            min-width: 150px;
+            height: 45px;
+            background-color: transparent;
+            overflow: hidden;
+        }
+
+        .logo-img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-img:not([src]), .logo-img[src="Lala.png"] {
+            visibility: hidden;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            font-weight: bold;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* --- CATEGORY HERO BANNER --- */
+        .category-title-banner {
+            background-color: #0a2240;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .category-title-banner h1 {
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+
+        /* --- FILTER & SORT TOOLBAR --- */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 8px;
+        }
+
+        .view-dot {
+            width: 14px;
+            height: 14px;
+            background-color: #333;
+            display: inline-block;
+        }
+
+        .filter-btn, .sort-select {
+            background: none;
+            border: none;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 60vh; /* Chiếm 60% chiều cao màn hình, nhìn rất vừa vặn */
+    background-image: url('banner.png'); /* Gọi đúng tên ảnh của ông */
+    background-attachment: fixed; /* Khóa ảnh nền lại để tạo hiệu ứng kéo cuộn Parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Lớp phủ mờ giúp chữ nổi bật hơn và ảnh có gu hơn */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); /* Phủ một lớp đen mờ 25% */
+}
+
+/* Nội dung chữ trên Banner */
+.hero-content {
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+    z-index: 2;
+}
+
+.hero-content h2 {
+    font-size: 40px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: fadeInDown 1s ease; /* Hiệu ứng chữ hiện từ trên xuống khi load trang */
+}
+
+.hero-content p {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Thu nhỏ chiều cao banner trên điện thoại để không bị chiếm hết chỗ */
+@media (max-width: 768px) {
+    .hero-banner {
+        height: 40vh;
+        background-attachment: scroll; /* Trên điện thoại tắt fixed đi để mượt hơn */
+    }
+    .hero-content h2 { font-size: 28px; }
+}
+        /* --- PRODUCT GRID --- */
+        .product-container {
+            padding: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 20px;
+            row-gap: 40px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            background-color: #f6f6f6;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            width: 120px;  
+            height: 120px; 
+            visibility: hidden;
+            cursor: crosshair;
+            background-repeat: no-repeat;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            pointer-events: none;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 2px;
+        }
+
+        .product-info {
+            margin-top: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+
+
+        
+
+        /* ĐÃ THÊM: CSS NÚT LIÊN HỆ DƯỚI SẢN PHẨM TINH TẾ */
+        .contact-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 2px;
+            align-self: flex-start;
+            transition: all 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        /* --- PAGINATION BUTTONS --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 5px 0 50px 0;
+            flex-wrap: wrap;
+            padding: 0 40px;
+        }
+
+        .page-btn {
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            color: #000000;
+            padding: 8px 14px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover {
+            border-color: #000000;
+        }
+
+        .page-btn.active {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .page-btn:disabled {
+            background-color: #f5f5f5;
+            color: #ccc;
+            border-color: #e5e5e5;
+            cursor: not-allowed;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .header { flex-direction: column; gap: 15px; padding: 15px; height: auto; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+</header> <!-- Kết thúc Header cũ của ông -->
+
+    <!-- THÊM ĐOẠN BANNER NÀY VÀO ĐÂY -->
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>LALA SUMMER ON</h2>
+            <p>Collection 2026</p>
+        </div>
+    </section>
+
+    <section class="category-title-banner"> <!-- Phần chữ PRODUCTS cũ của ông -->
+    <div class="top-banner"></div>
+
+    <header class="header">
+        <a href="#" class="logo-box-placeholder">
+            <img src="lala.png" alt="Lala Fashion Logo" class="logo-img">
+        </a>
+        
+        <ul class="nav-links"></ul>
+    
+    </header>
+
+    <section class="category-title-banner">
+        <h1>PRODUCTS</h1>
+    </section>
+
+
+    <main class="product-container">
+        <div class="product-grid" id="productGrid"></div>
+    </main>
+
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+    const totalImages = 500;   
+    const itemsPerPage = 50;   
+    let currentPage = 1;
+
+    // Tạo một danh sách các số ảnh đã bị xóa
+    const deletedImages = [
+        64, 65, 96, 105, 118, 119, 122, 125, 145, 146, 
+        147, 150, 153, 155, 163, 165, 168, 176, 184, 185
+    ];
+
+    // ĐÃ SỬA: Thêm dòng tạo mảng rỗng để sửa lỗi "imageList is not defined"
+    const imageList = [];
+
+    for (let i = 1; i <= totalImages; i++) {
+        // Nếu số "i" nằm trong danh sách deletedImages thì bỏ qua
+        if (deletedImages.includes(i)) {
+            continue;
+        }
+
+        imageList.push({
+            id: i,
+            src: `f${i}.webp`, 
+            title: `PRODUCT NO.${i}`,
+            link: `https://www.facebook.com/100064900771748`
+            // ĐÃ SỬA: Điền chính xác ID trang Facebook của ông vào link link m.me luôn
+        
+        });
+    }
+
+    // 2. Hàm hiển thị sản phẩm
+    function displayProducts(page) {
+        const grid = document.getElementById('productGrid');
+        grid.innerHTML = "";
+
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const pageItems = imageList.slice(startIndex, endIndex);
+
+        pageItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            // ĐÃ SỬA: Chèn thêm nút "Liên hệ mua hàng →" dẫn link Facebook m.me từ data ra ngoài
+            card.innerHTML = `
+                <div class="image-container" onmousemove="zoomImage(event)" onmouseleave="hideLens(event)">
+                    <div class="zoom-lens"></div>
+                    <img src="${item.src}" alt="${item.title}" loading="lazy" 
+                         oncontextmenu="return false;" 
+                         ondragstart="return false;">
+                </div>
+                <div class="product-info">${item.title}</div>
+                <a href="${item.link}" target="_blank" class="contact-link">
+                    Liên hệ mua hàng →
+                </a>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // 3. Logic xử lý kính lúp (Zoom) cho ảnh .webp
+    function zoomImage(e) {
+        const container = e.currentTarget;
+        const lens = container.querySelector('.zoom-lens');
+        const img = container.querySelector('img');
+        
+        if (!lens || !img) return;
+
+        lens.style.visibility = 'visible';
+        const rect = container.getBoundingClientRect();
+        
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        let lensX = x - (lens.offsetWidth / 2);
+        let lensY = y - (lens.offsetHeight / 2);
+        
+        if (lensX < 0) lensX = 0;
+        if (lensX > container.offsetWidth - lens.offsetWidth) lensX = container.offsetWidth - lens.offsetWidth;
+        if (lensY < 0) lensY = 0;
+        if (lensY > container.offsetHeight - lens.offsetHeight) lensY = container.offsetHeight - lens.offsetHeight;
+        
+        lens.style.left = lensX + 'px';
+        lens.style.top = lensY + 'px';
+        
+        const zoomLevel = 2.5; 
+        
+        lens.style.backgroundImage = `url('${img.src}')`;
+        lens.style.backgroundSize = `${container.offsetWidth * zoomLevel}px ${container.offsetHeight * zoomLevel}px`;
+        
+        const backgroundX = -((x * zoomLevel) - (lens.offsetWidth / 2));
+        const backgroundY = -((y * zoomLevel) - (lens.offsetHeight / 2));
+        lens.style.backgroundPosition = `${backgroundX}px ${backgroundY}px`;
+    }
+
+    function hideLens(e) {
+        const lens = e.currentTarget.querySelector('.zoom-lens');
+        if (lens) {
+            lens.style.visibility = 'hidden';
+        }
+    }
+
+    // 4. Hàm tạo thanh phân trang số
+    function setupPagination() {
+        const paginationContainer = document.getElementById('pagination');
+        paginationContainer.innerHTML = "";
+
+        const totalPages = Math.ceil(imageList.length / itemsPerPage);
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-btn';
+        prevBtn.innerText = '«';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePage();
+            }
+        };
+        paginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+            pageBtn.innerText = i;
+            pageBtn.onclick = () => {
+                currentPage = i;
+                updatePage();
+            };
+            paginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-btn';
+        nextBtn.innerText = '»';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePage();
+            }
+        };
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    // Khóa chuột phải trên ảnh
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+            e.preventDefault();
+        }
+    });
+
+    function updatePage() {
+        displayProducts(currentPage);
+        setupPagination();
+        window.scrollTo(0, 0); 
+    }
+
+    updatePage();
+</script>
+
+
+</script>
+</body>
+</html>
